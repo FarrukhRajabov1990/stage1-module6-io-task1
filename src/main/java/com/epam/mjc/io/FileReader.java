@@ -12,7 +12,7 @@ public class FileReader {
     public Profile getDataFromFile(File file) {
 
         List<Character> charList = new ArrayList<>();
-        file = new File("Profile.txt");
+
         try(InputStream input = new FileInputStream(file)) {
 
             int result;
