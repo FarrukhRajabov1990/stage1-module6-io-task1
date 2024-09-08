@@ -40,10 +40,16 @@ public class FileReader {
         }
 
         Profile newProfile = new Profile();
-        newProfile.setName(mapList.get("Name"));
-        newProfile.setAge(Integer.parseInt(mapList.get("Age")));
-        newProfile.setEmail(mapList.get("Email"));
-        newProfile.setPhone(Long.parseLong(mapList.get("Phone")));
+
+        try {
+            newProfile.setName(mapList.get("Name"));
+            newProfile.setAge(Integer.parseInt(mapList.get("Age")));
+            newProfile.setEmail(mapList.get("Email"));
+            newProfile.setPhone(Long.parseLong(mapList.get("Phone")));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
         return newProfile;
     }
 }
