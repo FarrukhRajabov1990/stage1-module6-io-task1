@@ -12,25 +12,17 @@ public class FileReader {
     public Profile getDataFromFile(File file) {
 
         List<Character> charList = new ArrayList<>();
-        InputStream input = null;
-        try {
-            file = new File("Profile.txt");
-            input = new FileInputStream(file);
+        file = new File("Profile.txt");
+        try(InputStream input = new FileInputStream(file)) {
+
             int result;
             while ((result = input.read()) != -1) {
                 charList.add((char) result);
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
+
         List<String> byLines = new ArrayList<>();
         StringBuilder line = new StringBuilder();
         for (char chars : charList) {
